@@ -1,96 +1,128 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>ISPC_groupname_2025</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
-  <script src="https://cdn.jsdelivr.net/npm/lucide@0.292.0/dist/lucide.js"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Inter', 'sans-serif'] },
-          colors: { brand: { dark: '#0f172a', accent: '#38bdf8', secondary: '#818cf8' } }
-        }
-      }
-    }
-  </script>
-  <style>
-    body { background-color: #0f172a; color: #e2e8f0; }
-    ::-webkit-scrollbar { width: 8px; }
-    ::-webkit-scrollbar-track { background: #1e293b; }
-    ::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
-    ::-webkit-scrollbar-thumb:hover { background: #64748b; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ISPC_groupname_2025</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+fontFamily: { sans: ['Inter', 'sans-serif'] },
+colors: { brand: { dark: '#0f172a', accent: '#38bdf8', secondary: '#818cf8' } }
+}
+}
+}
+</script>
+<style>
+body { background-color: #0f172a; color: #e2e8f0; font-family: 'Inter', sans-serif; }
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: #1e293b; }
+::-webkit-scrollbar-thumb { background: #475569; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #64748b; }
+</style>
 </head>
 <body>
-  <div id="root"></div>
-  <script type="text/babel">
-    const { useState } = React;
-    const { Menu, X, Hexagon, ArrowRight, Mail, Search, Lightbulb, PenTool, CheckCircle2, AlertTriangle, Check, Atom, FlaskConical, Calculator, Book, Globe, User } = lucide;
-    const TEAM_MEMBERS = [
-      { id: 1, name: "Rushabh Siddhpura", role: "Team Member", gradeDivision: "Grade 11 - Div A", bio: "Contributed to chemical formulation and material testing.", imageUrl: "./images/rushabh.jpeg" },
-      { id: 2, name: "Daksh Gandhi", role: "Team Member", gradeDivision: "Grade 11 - Div A", bio: "Focused on experimental design and data analysis.", imageUrl: "./images/daksh.jpeg" },
-      { id: 3, name: "Smit Parekh", role: "Team Member", gradeDivision: "Grade 11 - Div A", bio: "Researched environmental impact and biodegradability.", imageUrl: "./images/smit.jpeg" },
-      { id: 4, name: "Mahir Hansaliya", role: "Team Member", gradeDivision: "Grade 11 - Div A", bio: "Worked on prototyping and physical property testing.", imageUrl: "./images/mahir.jpeg" },
-      { id: 5, name: "Sarvam Ghetia", role: "Team Member", gradeDivision: "Grade 11 - Div A", bio: "Managed documentation and project presentation.", imageUrl: "./images/sarvam.jpeg" }
-    ];
-    const SCIENCE_TOPICS = [
-      { id: 'physics', title: 'Physics', description: 'Mechanical properties: Stress, Strain, and Elasticity.', fullExplanation: '1. Stress and Strain\nThe strength of the bioplastic is tested by applying loads and observing deformation.\n2. Elasticity and Flexibility\nThe effect of glycerin concentration on elasticity is studied by bending and stretching.', iconName: 'Atom' },
-      { id: 'chemistry', title: 'Chemistry', description: 'Polymers, Gelatinisation, and organic breakdown.', fullExplanation: '1. Starch Extraction\nBanana peels contain starch composed of amylose and amylopectin.\n2. Gelatinisation\nWhen starch is heated with water, the granules swell and form a polymer matrix.\n3. Biodegradability\nAll components break down naturally.', iconName: 'FlaskConical' },
-      { id: 'maths', title: 'Maths', description: 'Statistical analysis of durability and degradation.', fullExplanation: 'Mathematical analysis of experimental data including tensile strength calculations and degradation rates over time.', iconName: 'Calculator' }
-    ];
-    const REFERENCES = [
-      { id: 1, title: "Reference details to be added", author: "Author", type: "Book" },
-      { id: 2, title: "Reference details to be added", author: "Author", type: "Website", link: "#" },
-      { id: 3, title: "Mentor Name", author: "Mentor", type: "Mentor" }
-    ];
-    const Navbar = ({ currentView, onNavigate }) => {
-      const [isOpen, setIsOpen] = useState(false);
-      const navItems = [ { id: 'home', label: 'Home' }, { id: 'about', label: 'About Us' }, { id: 'idea', label: 'The Idea' }, { id: 'product', label: 'Product' }, { id: 'science', label: 'Science' }, { id: 'bibliography', label: 'Ackn.' } ];
-      const handleNav = (view) => { onNavigate(view); setIsOpen(false); };
-      return (
-        <nav className="fixed top-0 w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-700">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-16">
-            <div className="flex items-center cursor-pointer" onClick={() => handleNav('home')}>
-              <Hexagon className="h-8 w-8 text-cyan-400" />
-              <span className="ml-2 text-xl font-bold text-white tracking-wider">ISPC</span>
-            </div>
-            <div className="hidden md:flex space-x-4">{navItems.map((item) => (<button key={item.id} onClick={() => handleNav(item.id)} className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${currentView === item.id ? 'bg-cyan-500/10 text-cyan-400' : 'text-gray-300 hover:text-white hover:bg-slate-700'}`}>{item.label}</button>))}</div>
-            <div className="md:hidden"><button onClick={() => setIsOpen(!isOpen)} className="p-2 text-gray-400 hover:text-white hover:bg-slate-700 rounded-md">{isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}</button></div>
-          </div>
-          {isOpen && <div className="md:hidden bg-slate-800 border-b border-slate-700"><div className="px-2 pt-2 pb-3 space-y-1">{navItems.map((item) => (<button key={item.id} onClick={() => handleNav(item.id)} className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${currentView === item.id ? 'bg-cyan-500/20 text-cyan-400' : 'text-gray-300 hover:text-white hover:bg-slate-700'}`}>{item.label}</button>))}</div></div>}
-        </nav>
-      );
-    };
-    const Home = ({ onStart }) => (
-      <div className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full z-0 pointer-events-none opacity-20">
-          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-cyan-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
-        </div>
-        <div className="relative z-10 max-w-4xl mx-auto px-4 text-center">
-          <h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500 mb-6">Green Polymer Initiative</h1>
-          <p className="text-xl md:text-2xl text-slate-300 mb-8 font-light">Bioplastic from Banana Peels</p>
-          <div className="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700 shadow-2xl mb-10">
-            <h2 className="text-2xl font-semibold text-white mb-4">AIM</h2>
-            <p className="text-slate-300 leading-relaxed">The aim of this project is to develop a low-cost, biodegradable plastic material using banana peel waste as the primary raw material and to study its physical and chemical properties for potential use in everyday products such as handbags and packaging.</p>
-          </div>
-          <button onClick={onStart} className="group inline-flex items-center px-8 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105">Explore Our Journey<ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" /></button>
-        </div>
-      </div>
-    );
-    const App = () => {
-      const [currentView, setCurrentView] = useState('home');
-      const handleNavigate = (view) => { if(view===currentView) return; window.scrollTo({top:0, behavior:'smooth'}); setCurrentView(view); };
-      const renderView = () => { if(currentView==='home') return <Home onStart={()=>handleNavigate('about')} />; return <div className="min-h-screen flex items-center justify-center text-white text-3xl">Content for {currentView}</div>; };
-      return (<div className="min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-cyan-500/30"><Navbar currentView={currentView} onNavigate={handleNavigate} /><main>{renderView()}</main></div>);
-    };
-    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-  </script>
+<div id="root"></div>
+<script type="text/babel">
+const { useState } = React;
+
+const TEAM_MEMBERS = [
+{name:"Rushabh Siddhpura",role:"Team Member",gradeDivision:"Grade 11 - Div A",bio:"Contributed to chemical formulation and material testing.",imageUrl:"./images/rushabh.jpeg"},
+{name:"Daksh Gandhi",role:"Team Member",gradeDivision:"Grade 11 - Div A",bio:"Focused on experimental design and data analysis.",imageUrl:"./images/daksh.jpeg"},
+{name:"Smit Parekh",role:"Team Member",gradeDivision:"Grade 11 - Div A",bio:"Researched environmental impact and biodegradability.",imageUrl:"./images/smit.jpeg"},
+{name:"Mahir Hansaliya",role:"Team Member",gradeDivision:"Grade 11 - Div A",bio:"Worked on prototyping and physical property testing.",imageUrl:"./images/mahir.jpeg"},
+{name:"Sarvam Ghetia",role:"Team Member",gradeDivision:"Grade 11 - Div A",bio:"Managed documentation and project presentation.",imageUrl:"./images/sarvam.jpeg"}
+];
+
+const SCIENCE_TOPICS = [
+{id:'physics',title:'Physics',description:'Mechanical properties: Stress, Strain, and Elasticity.',fullExplanation:`1. Stress and Strain\n\nThe strength of the bioplastic is tested by applying loads and observing deformation. This demonstrates the relationship between force, area, and elongation.\n\n2. Elasticity and Flexibility\n\nThe effect of glycerin concentration on elasticity is studied by bending and stretching the material, linking molecular motion to macroscopic properties.`,iconName:'Atom'},
+{id:'chemistry',title:'Chemistry',description:'Polymers, Gelatinisation, and organic breakdown.',fullExplanation:`1. Starch Extraction and Composition\n\nBanana peels contain starch composed of amylose and amylopectin. These polysaccharides act as natural polymers.\n\n2. Gelatinisation Process\n\nWhen starch is heated with water, the granules swell and break, releasing polymer chains that form a continuous matrix. This is the fundamental chemical process that enables plastic formation.\n\n3. Biodegradability\n\nSince all components are organic, the material breaks down naturally through microbial action, unlike synthetic plastics.`,iconName:'FlaskConical'},
+{id:'maths',title:'Maths',description:'Statistical analysis of durability and degradation.',fullExplanation:'Mathematical analysis of experimental data including tensile strength calculations and degradation rates over time.',iconName:'Calculator'}
+];
+
+const REFERENCES = [
+{id:1,title:"Reference details to be added",author:"Author",type:"Book"},
+{id:2,title:"Reference details to be added",author:"Author",type:"Website",link:"#"},
+{id:3,title:"Mentor Name",author:"Mentor",type:"Mentor"}
+];
+
+const Navbar = ({ currentView, onNavigate })=>{
+const [isOpen,setIsOpen] = useState(false);
+const navItems=[{id:'home',label:'Home'},{id:'about',label:'About Us'},{id:'idea',label:'The Idea'},{id:'product',label:'Product'},{id:'science',label:'Science'},{id:'bibliography',label:'Ackn.'}];
+const handleNav=(view)=>{onNavigate(view);setIsOpen(false);}
+return(<nav className="fixed top-0 w-full z-50 bg-slate-900/90 backdrop-blur-md border-b border-slate-700">
+<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div className="flex items-center justify-between h-16">
+<div className="flex items-center cursor-pointer" onClick={()=>handleNav('home')}><span className="ml-2 text-xl font-bold text-white tracking-wider">ISPC</span></div>
+<div className="hidden md:block"><div className="ml-10 flex items-baseline space-x-4">{navItems.map((item)=>(<button key={item.id} onClick={()=>handleNav(item.id)} className={`px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${currentView===item.id?'bg-cyan-500/10 text-cyan-400':'text-gray-300 hover:text-white hover:bg-slate-700'}`}>{item.label}</button>))}</div></div>
+<div className="-mr-2 flex md:hidden"><button onClick={()=>setIsOpen(!isOpen)} className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-slate-700 focus:outline-none">{isOpen?"X":"M"}</button></div>
+</div>
+</div>
+{isOpen&&(<div className="md:hidden bg-slate-800 border-b border-slate-700"><div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">{navItems.map((item)=>(<button key={item.id} onClick={()=>handleNav(item.id)} className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${currentView===item.id?'bg-cyan-500/20 text-cyan-400':'text-gray-300 hover:text-white hover:bg-slate-700'}`}>{item.label}</button>))}</div></div>)}
+</nav>);
+}
+
+const Home=({onStart})=>(<div className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden"><div className="relative z-10 max-w-4xl mx-auto px-4 text-center"><h1 className="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 to-purple-500 mb-6">Green Polymer Initiative</h1><p className="text-xl md:text-2xl text-slate-300 mb-8 font-light">Bioplastic from Banana Peels</p><div className="bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700 shadow-2xl mb-10"><h2 className="text-2xl font-semibold text-white mb-4">AIM</h2><p className="text-slate-300 leading-relaxed">The aim of this project is to develop a low-cost, biodegradable plastic material using banana peel waste as the primary raw material and to study its physical and chemical properties for potential use in everyday products such as handbags and packaging.</p></div><button onClick={onStart} className="group inline-flex items-center px-8 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold rounded-full transition-all duration-300 transform hover:scale-105">Explore Our Journey</button></div></div>);
+
+const AboutUs=()=>(
+<div className="min-h-screen pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+<div className="text-center mb-16"><h2 className="text-4xl font-bold text-white mb-4">About Us</h2></div>
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-8 mb-20">
+{TEAM_MEMBERS.map((member,index)=>(<div key={index} className="bg-slate-800 rounded-xl overflow-hidden border border-slate-700 hover:border-cyan-500/50 transition-colors duration-300 group"><div className="relative h-64 overflow-hidden"><img src={member.imageUrl} alt={member.name} className="w-full h-full object-cover"/></div><div className="p-4"><p className="text-xs text-slate-400 mb-2 uppercase tracking-wide border-b border-slate-700 pb-2">{member.gradeDivision}</p><p className="text-slate-300 text-xs leading-relaxed">{member.bio}</p></div></div>))}
+</div>
+</div>
+);
+
+const ProductIdea=()=>(
+<div className="min-h-screen pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+<div className="text-center mb-16"><h2 className="text-4xl font-bold text-white mb-4">The Idea</h2></div>
+<div className="grid md:grid-cols-2 gap-8 mb-16"><div className="bg-red-500/10 border border-red-500/20 p-8 rounded-2xl"><h3 className="text-2xl font-bold text-white mb-3">The Problem</h3><p className="text-slate-300 leading-relaxed">Non-biodegradable plastics cause severe environmental pollution and persist in nature for hundreds of years. At the same time, large amounts of kitchen waste such as banana peels are discarded daily despite being rich in useful starch. The lack of low-cost, eco-friendly alternatives to plastic worsens both waste management and pollution problems.</p></div>
+<div className="bg-green-500/10 border border-green-500/20 p-8 rounded-2xl"><h3 className="text-2xl font-bold text-white mb-3">The Solution</h3><p className="text-slate-300 leading-relaxed">This project addresses these issues by converting banana peel waste into biodegradable bioplastic.</p></div></div>
+</div>
+);
+
+const ProductShowcase=()=>(
+<div className="min-h-screen pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+<div className="text-center mb-12"><h2 className="text-4xl font-bold text-white mb-4">The Product</h2></div>
+<div className="grid lg:grid-cols-2 gap-12 mb-16 items-center"><div className="bg-slate-800 rounded-2xl overflow-hidden border border-slate-700 shadow-2xl"><img src="./product.jpeg" alt="Bioplastic Product" className="w-full h-auto object-cover"/></div></div>
+</div>
+);
+
+const ScienceIntegration=()=>(
+<div className="min-h-screen pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+<div className="text-center mb-16"><h2 className="text-4xl font-bold text-white mb-4">Science Integration</h2></div>
+</div>
+);
+
+const Bibliography=()=>(
+<div className="min-h-screen pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+<div className="text-center mb-16"><h2 className="text-4xl font-bold text-white mb-4">Acknowledgments & References</h2></div>
+</div>
+);
+
+const App=()=>{
+const [currentView,setCurrentView]=useState('home');
+const handleNavigate=(view)=>{setCurrentView(view);}
+const renderView=()=>{
+switch(currentView){
+case 'home':return<Home onStart={()=>handleNavigate('about')}/>;
+case 'about':return<AboutUs/>;
+case 'idea':return<ProductIdea/>;
+case 'product':return<ProductShowcase/>;
+case 'science':return<ScienceIntegration/>;
+case 'bibliography':return<Bibliography/>;
+default:return<Home onStart={()=>handleNavigate('about')}/>;
+}
+}
+return(<div className="min-h-screen bg-slate-900 text-slate-100 font-sans selection:bg-cyan-500/30"><Navbar currentView={currentView} onNavigate={handleNavigate}/>{renderView()}</div>);
+}
+
+const root=ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App/>);
+</script>
 </body>
 </html>
